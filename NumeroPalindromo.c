@@ -44,19 +44,9 @@ isPalindrome
     int numCar = contarDigitos ( x );
     char charTemp;
     char *numerosChar = ( char * ) malloc( sizeof( char ) * numCar );
-    if ( numerosChar == NULL ) {
-        printf ( "Erro de alocação de memória" );
-        exit ( 1 );
-    }
-
     snprintf ( numerosChar, numCar, "%d", x );
 
     char *numerosInv = ( char * ) malloc ( sizeof ( char ) * numCar );
-    if ( numerosInv == NULL ) {
-        printf ( "Erro de alocação de memória" );
-        exit ( 1 );
-    }
-    
     strcpy ( numerosInv, numerosChar );
     int count1 = 0, count2 = strlen(numerosInv) - 1;
 
@@ -71,4 +61,19 @@ isPalindrome
     } else {
         return false;
     }
+}
+
+int main () {
+    int x;
+
+    printf ( "Digite um número inteiro: " );
+    scanf ( "%d", &x );
+
+    if ( isPalindrome ( x ) ) {
+        printf ( "O número %d é um palíndromo.\n", x );
+    } else {
+        printf ( "O número %d não é um palíndromo.\n", x );
+    }
+
+    return 0;
 }
