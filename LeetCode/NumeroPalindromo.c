@@ -57,8 +57,14 @@ isPalindrome
     }
 
     if ( strcmp ( numerosInv, numerosChar ) == 0 ) {
+        free ( numerosChar );
+        free ( numerosInv );
+
         return true;
     } else {
+        free ( numerosChar );
+        free ( numerosInv );
+        
         return false;
     }
 }
