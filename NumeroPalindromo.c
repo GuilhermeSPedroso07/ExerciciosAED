@@ -44,9 +44,19 @@ isPalindrome
     int numCar = contarDigitos ( x );
     char charTemp;
     char *numerosChar = ( char * ) malloc( sizeof( char ) * numCar );
+    if ( numerosChar == NULL ) {
+        printf ( "Erro de alocação de memória" );
+        exit ( 1 );
+    }
+
     snprintf ( numerosChar, numCar, "%d", x );
 
     char *numerosInv = ( char * ) malloc ( sizeof ( char ) * numCar );
+    if ( numerosInv == NULL ) {
+        printf ( "Erro de alocação de memória" );
+        exit ( 1 );
+    }
+    
     strcpy ( numerosInv, numerosChar );
     int count1 = 0, count2 = strlen(numerosInv) - 1;
 
