@@ -4,16 +4,6 @@
 #include <stdbool.h>
 
 int contarDigitos ( int x ) {
-    /*
-===============================================================================
-contarDigitos 
-
-    Essa função conta a quantidade de dígitos de uma int qualquer, considerando
-    o símbolo de negativo, e devolve para transformar em uma string, adicionando
-    1 para o '\0'
-===============================================================================
-*/
-
     int count = 1;
     unsigned int intTemp = x;
 
@@ -34,13 +24,7 @@ contarDigitos
 }
 
 bool isPalindrome ( int x ) {
-    /*
-===============================================================================
-isPalindrome
 
-    Essa função recebe uma int e verifica se o número recebido é um palíndromo
-===============================================================================
-*/
     int numCar = contarDigitos ( x );
     char charTemp;
     char *numerosChar = ( char * ) malloc( sizeof( char ) * numCar );
