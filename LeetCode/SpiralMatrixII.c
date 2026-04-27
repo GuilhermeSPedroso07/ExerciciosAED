@@ -1,8 +1,8 @@
-/**
- * Return an array of arrays of size *returnSize.
- * The sizes of the arrays are returned as *returnColumnSizes array.
- * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
- */
+#include <stdio.h>
+#include <stdlib.h>
+
+//Guilherme Schivittez Pedroso
+
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes) {
     int count = 0, l = 0, r = n - 1, u = 0, d = n - 1;
     int **mat = ( int ** ) malloc ( sizeof ( int * ) * n );
@@ -35,4 +35,22 @@ int** generateMatrix(int n, int* returnSize, int** returnColumnSizes) {
         l++;
     }
     return mat;
+}
+
+int main(int argc, char const *argv[])
+{
+    int n = 6, returnSize, *returnColumnSizes;
+    int **result = generateMatrix(n, &returnSize, &returnColumnSizes);
+    for ( int count = 0; count < returnSize; count++) {
+        for ( int i = 0; i < returnColumnSizes[count]; i++ ) {
+            printf ( "%d ", result[count][i] );
+        }
+        printf( "\n" );
+    }
+
+    for ( int count = 0; count < n; count++ ) {
+        free ( result[count] );
+    }
+    free ( result );
+    free ( returnColumnSizes );
 }
