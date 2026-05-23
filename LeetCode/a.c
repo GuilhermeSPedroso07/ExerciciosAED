@@ -11,8 +11,10 @@ void addToList ( int num, lista **list ) {
     lista *ptr = ( *list );
     while ( ptr->value != num ) {
         if ( ptr->next == NULL ) {
-            ptr->next = malloc ( sizeof ( list ) );
+            ptr->next = malloc ( sizeof ( lista ) );
+            ptr->next->manyTimes = 0;
             ptr->next->value = num;
+            ptr->next->next = NULL;
         }
         ptr = ptr->next;
     }
@@ -27,9 +29,10 @@ int majorElement ( lista *list, int n ) {
 }
 
 int majorityElement(int* nums, int numsSize) {
-    lista *list = malloc ( sizeof ( list ) );
+    lista *list = malloc ( sizeof ( lista ) );
     list->value = nums[0];
     list->manyTimes = 1;
+    list->next = NULL;
     for ( int count = 1; count < numsSize; count++ ) {
         addToList ( nums[count], &list );
     }
