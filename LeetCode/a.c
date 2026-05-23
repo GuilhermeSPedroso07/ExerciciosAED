@@ -12,9 +12,10 @@ void addToList ( int num, lista **list ) {
     while ( ptr->value != num ) {
         if ( ptr->next == NULL ) {
             ptr->next = malloc ( sizeof ( lista ) );
-            ptr->next->manyTimes = 0;
+            ptr->next->manyTimes = 1;
             ptr->next->value = num;
             ptr->next->next = NULL;
+            return;
         }
         ptr = ptr->next;
     }
@@ -22,10 +23,15 @@ void addToList ( int num, lista **list ) {
 }
 
 int majorElement ( lista *list, int n ) {
-    while ( list->manyTimes < ( n/2 ) ) {
+    int maxElement = 0, maxTimes = 0;
+    while ( list != NULL ) {
+        if ( list->manyTimes > maxTimes) {
+            maxTimes = list->manyTimes;
+            maxElement = list->value;
+        }
         list = list->next;
     }
-    return list->value;
+    return maxElement;
 }
 
 int majorityElement(int* nums, int numsSize) {
