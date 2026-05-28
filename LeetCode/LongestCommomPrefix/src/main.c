@@ -10,7 +10,6 @@ char* longestCommonPrefix(char** strs, int strsSize) {
     char *prefix = ( char * ) malloc ( sizeof ( char ) * (size + 1 ));
     strcpy ( prefix, strs[0] );
     for ( int i = 1; i < strsSize; i++ ) {
-        printf ( "%s", prefix);
         for ( int j = size; j >= 0; j-- ) {
             if ( strncmp ( prefix, strs[i], j ) == 0 ) {
                 prefix[j] = '\0';
@@ -37,8 +36,8 @@ int main(int argc, char const *argv[])
     strs[1] = string2;
     strs[2] = string3;
 
-
-    printf ( "%s", longestCommonPrefix(strs, 3 ));
-
+    char *prefix = longestCommonPrefix(strs, 3 );
+    printf ( "%s", prefix);
+    free ( prefix );
     return 0;
 }
